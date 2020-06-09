@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<meta charset="UTF-8">
+	<title>main</title>
+</head>
+<body>
+	<h1>どこつぶメイン</h1>
+	<p><span sec:authentication="principal.user.name">山田</span>さん、ログイン中。</p>
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" value="ログアウト">
+	</form>
+	<p><a th:href="@{/main}">更新</a></p>
+	
+	<form th:action="@{/main}" th:object="${mutterForm}" method="post">
+    	<!-- <input type="text" name="userName" th:field="*{userName}"> -->
+    	<!-- <input type="text" name="text" th:field="*{text}"> -->
+    	<input type="text" th:field="*{text}">
+		<input type="submit" value="つぶやく"><br>
+		<font color="red"><span th:if="${#fields.hasErrors('text')}" th:errors="*{text}">error!!</span></font> 
+	</form>
+	
+	<div th:if="${#lists.isEmpty(mutters)}">つぶやきはまだ登録されていません。</div>
+	<div th:unless="${#lists.isEmpty(mutters)}">
+		<table style="border:none;">
+		<tr th:each="mutter : ${mutters}">
+			<td th:text="|${mutter.user.name} : ${mutter.text}|">山田太郎：山田は偉い</td>
+		</tr>
+		</table>
+	</div>
+	
+	<hr>
+	
+	<form th:action="@{/user/withdrawResult}" method="post">
+		<input type="submit" value="退会する">
+	</form>
+	
+</body>
+</html>

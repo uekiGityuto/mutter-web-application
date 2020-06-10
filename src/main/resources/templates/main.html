@@ -47,6 +47,7 @@
 		<p>みんなのつぶやき</p>
 
 		<div th:if="${#lists.isEmpty(mutters)}">つぶやきはまだ登録されていません。</div>
+		
 		<div th:unless="${#lists.isEmpty(mutters)}">
 			<table class="table table-bordered">
 				<thead class="thead-light">
@@ -60,6 +61,18 @@
 					<td class="col-md-10" th:text="${mutter.text}">山田は偉い</td>
 				</tr>
 			</table>
+			
+			<!-- ページネーション -->
+			<nav aria-label="Page navigation">
+  				<ul class="pagination">
+    				<th:block th:each="i : ${ #numbers.sequence(0, page.totalPages - 1) }">
+      					<li th:if="${i ge 0}" class="page-item" th:classappend="${i eq page.number} ? 'active'">
+        					<a th:href="@{/main(page=${i})}" th:text="${i + 1}" class="page-link"></a>
+      					</li>
+    				</th:block>
+  				</ul>
+			</nav>		
+				
 		</div>
 
 		<hr>

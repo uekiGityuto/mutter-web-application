@@ -29,9 +29,6 @@ public class Mutter implements Serializable{
 	@Column(name="ID", length=8)
 	private Integer id;
 			
-//	@Column(nullable = false, name ="USER_NAME", length=64)
-//	private String userName;
-	
 	@Column(nullable = false, name = "TEXT", length = 120)
 	private String text;
 	

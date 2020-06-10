@@ -1,8 +1,8 @@
 package com.example.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,8 +15,8 @@ import com.example.repository.MutterRepository;
 public class MutterService {
 	@Autowired MutterRepository mutterRepository;
 	
-	public List<Mutter> findAll() {
-		return mutterRepository.findAll();
+	public Page<Mutter> findAll(Pageable pageable) {
+		return mutterRepository.findAllDescOrderById(pageable);
 	}
 	
 	public Mutter create(Mutter mutter, User user) {
@@ -24,9 +24,4 @@ public class MutterService {
 		return mutterRepository.save(mutter);
 	}
 
-/*	
-	public Mutter create(Mutter mutter) {
-		return mutterRepository.save(mutter);
-	}
-*/
 }

@@ -7,7 +7,7 @@
 * つぶやき
 * つぶやきの閲覧
 ## 環境
-* Java 14.0.1
+* Java 8
 * Spring Boot 2.3.0
 * JPA
 * H2 Database

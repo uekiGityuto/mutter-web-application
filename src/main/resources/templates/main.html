@@ -52,13 +52,15 @@
 			<table class="table table-bordered">
 				<thead class="thead-light">
 					<tr class="d-flex">
+						<th class="col-md-2">つぶやき時刻</th>
 						<th class="col-md-2">ユーザ名</th>
-						<th class="col-md-10">つぶやき</th>
+						<th class="col-md-8">つぶやき</th>
 					</tr>
 				</thead>
 				<tr class="d-flex" th:each="mutter : ${mutters}">
+					<td class="col-md-2" th:text="${mutter.timestamp}">11:20</td>
 					<td class="col-md-2" th:text="${mutter.user.name}">山田太郎</td>
-					<td class="col-md-10" th:text="${mutter.text}">山田は偉い</td>
+					<td class="col-md-8" th:text="${mutter.text}">山田は偉い</td>
 				</tr>
 			</table>
 			

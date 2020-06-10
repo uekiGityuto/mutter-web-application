@@ -1,5 +1,7 @@
 package com.example.service;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,6 +22,7 @@ public class MutterService {
 	}
 	
 	public Mutter create(Mutter mutter, User user) {
+		mutter.setTimestamp(new Date());
 		mutter.setUser(user);
 		return mutterRepository.save(mutter);
 	}

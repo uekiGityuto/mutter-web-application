@@ -14,6 +14,6 @@ public class MutterForm {
 	private String userName;
 	*/
 	@NotNull
-	@Size(min = 1, max = 140)
+	@Size(min = 1, max = 120)
 	private String text;
 }

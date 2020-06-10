@@ -1,45 +1,49 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>index</title>
-	<link rel="stylesheet"
-	      href="http://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-	      th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}"/>
-	<link rel="stylesheet"
-	      href="http://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap-theme.min.css"
-	      th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap-theme.min.css}"/>	
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>index</title>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}" />
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap-theme.min.css"
+	th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap-theme.min.css}" />
 </head>
 
 <body>
-<div class="container">
+	<div class="container">
 
-	<div class="jumbotron">
-		<h1>つぶやき君へようこそ</h1>
-	</div>
-	
-	<form th:action="@{/authenticate}" class="form-signin" method="post">
-	<h4 class="form-signin-heading">ログインフォーム</h4>
-		<div th:if="${param.error}" class="alert alert-danger">
-			ユーザ名またはパスワードが正しくありません。
+		<div class="jumbotron">
+			<h1>つぶやき君へようこそ</h1>
 		</div>
-		<input type="text" class="form-control" name="name" placeholder="Username" required="required">
-		<input type="password" class="form-control" name="pass" placeholder="Password" required="required"><br>
-		<button type="submit" class="btn btn-lg btn-primary btn-block">ログイン</button>
-	</form>
-	
-	<hr>
-	
-	<p><a th:href="@{/user/register}" class="text-primary">ユーザ登録する方はこちらから</a></p>
-	
-</div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"
-        th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"></script>
+		<form th:action="@{/authenticate}" class="form-signin" method="post">
+			<h4 class="form-signin-heading">ログインフォーム</h4>
+			<div th:if="${param.error}" class="alert alert-danger">
+				ユーザ名またはパスワードが正しくありません。</div>
+			<input type="text" class="form-control" name="name" placeholder="Username" required="required">
+			<input type="password" class="form-control" name="pass" placeholder="Password" required="required">
+			<br>
+			<button type="submit" class="btn btn-lg btn-primary btn-block">ログイン</button>
+		</form>
+
+		<hr>
+
+		<p>
+			<a th:href="@{/user/register}" class="text-primary">ユーザ登録する方はこちらから</a>
+		</p>
+
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+		th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+	<script
+		src="http://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+		th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"></script>
 
 </body>
 </html>

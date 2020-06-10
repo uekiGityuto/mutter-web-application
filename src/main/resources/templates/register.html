@@ -1,34 +1,50 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>index</title>
-	<link rel="stylesheet"
-	      href="http://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-	      th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}"/>
-	<link rel="stylesheet"
-	      href="http://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap-theme.min.css"
-	      th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap-theme.min.css}"/>	
-	<title>register</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>register</title>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}" />
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap-theme.min.css"
+	th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap-theme.min.css}" />
 </head>
 
 <body>
+	<div class="container">
 
-	<h1>ユーザ登録</h1>
-	
-	<form th:action="@{/user/registerResult}" th:object="${userForm}" method="post">
-	ユーザ名：<input type="text" name="name" th:field="*{name}">
-	<font color="red"><span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">error!</span></font>
-	<br>
-	パスワード：<input type="password" name="pass" th:field="*{pass}">
-	<font color="red"><span th:if="${#fields.hasErrors('pass')}" th:errors="*{pass}">error!</span></font>
-	<br>
-	<input type="submit" value="登録">
-	</form>
-	
-	<p><a th:href="@{/user/gotoTop}">トップへ戻る</a></p>
+		<h1>ユーザ登録</h1>
+		<br>
 
+		<form th:action="@{/user/registerResult}" th:object="${userForm}"
+			class="form-signin" method="post">
+			<h4 class="form-signin-heading">ユーザ登録フォーム</h4>
+			<div class="form-group"
+				th:classappend="${#fields.hasErrors('name')}?'has-error has-feedback'">
+				<input type="text" class="form-control" th:field="*{name}"
+					placeholder="Username" required="required">
+				<span th:if="${#fields.hasErrors('name')}" class="help-block"
+					th:errors="*{name}">error!</span>
+			</div>
+			<div class="form-group"
+				th:classappend="${#fields.hasErrors('pass')}?'has-error has-feedback'">
+				<input type="password" class="form-control" th:field="*{pass}"
+					placeholder="Password" required="required">
+				<span th:if="${#fields.hasErrors('pass')}" class="help-block"
+					th:errors="*{pass}">error!</span>
+			</div>
+			<br>
+			<button type="submit" class="btn btn-lg btn-primary btn-block">登録</button>
+		</form>
+		<br>
+
+		<p>
+			<a th:href="@{/user/gotoTop}" class="text-primary">トップへ戻る</a>
+		</p>
+
+	</div>
 </body>
 </html>

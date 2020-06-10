@@ -1,40 +1,81 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-	<meta charset="UTF-8">
-	<title>main</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>main</title>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}" />
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap-theme.min.css"
+	th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap-theme.min.css}" />
 </head>
+
 <body>
-	<h1>どこつぶメイン</h1>
-	<p><span sec:authentication="principal.user.name">山田</span>さん、ログイン中。</p>
-	<form th:action="@{/logout}" method="post">
-		<input type="submit" value="ログアウト">
-	</form>
-	<p><a th:href="@{/main}">更新</a></p>
-	
-	<form th:action="@{/main}" th:object="${mutterForm}" method="post">
-    	<!-- <input type="text" name="userName" th:field="*{userName}"> -->
-    	<!-- <input type="text" name="text" th:field="*{text}"> -->
-    	<input type="text" th:field="*{text}">
-		<input type="submit" value="つぶやく"><br>
-		<font color="red"><span th:if="${#fields.hasErrors('text')}" th:errors="*{text}">error!!</span></font> 
-	</form>
-	
-	<div th:if="${#lists.isEmpty(mutters)}">つぶやきはまだ登録されていません。</div>
-	<div th:unless="${#lists.isEmpty(mutters)}">
-		<table style="border:none;">
-		<tr th:each="mutter : ${mutters}">
-			<td th:text="|${mutter.user.name} : ${mutter.text}|">山田太郎：山田は偉い</td>
-		</tr>
-		</table>
+	<div class="container">
+
+		<h1>つぶやき君</h1>
+		<p>
+			<span sec:authentication="principal.user.name">山田</span>さん、ログイン中。
+		</p>
+
+		<form th:action="@{/logout}" method="post">
+			<button type="submit" class="btn btn-secondary btn-xs">ログアウト</button>
+		</form>
+		<p>
+			<a th:href="@{/main}" class="text-primary">更新</a>
+		</p>
+
+
+		<form th:action="@{/main}" th:object="${mutterForm}"
+			class="form-signin" method="post">
+			<div class="form-group"
+				th:classappend="${#fields.hasErrors('text')}?'has-error has-feedback'">
+				<textarea class="form-control" th:field="*{text}"
+					placeholder="120文字以下で自由につぶやいてね！" required="required"></textarea>
+				<span th:if="${#fields.hasErrors('text')}" class="help-block"
+					th:errors="*{text}">error!!</span>
+			</div>
+			<button type="submit" class="btn btn-primary">つぶやく</button>
+		</form>
+
+		<hr>
+
+		<p>みんなのつぶやき</p>
+
+		<div th:if="${#lists.isEmpty(mutters)}">つぶやきはまだ登録されていません。</div>
+		<div th:unless="${#lists.isEmpty(mutters)}">
+			<table class="table table-bordered">
+				<thead class="thead-light">
+					<tr class="d-flex">
+						<th class="col-md-2">ユーザ名</th>
+						<th class="col-md-10">つぶやき</th>
+					</tr>
+				</thead>
+				<tr class="d-flex" th:each="mutter : ${mutters}">
+					<td class="col-md-2" th:text="${mutter.user.name}">山田太郎</td>
+					<td class="col-md-10" th:text="${mutter.text}">山田は偉い</td>
+				</tr>
+			</table>
+		</div>
+
+		<hr>
+
+		<form th:action="@{/user/withdrawResult}" method="post">
+			<input type="submit" class="btn btn-secondary" value="退会する">
+		</form>
+
 	</div>
-	
-	<hr>
-	
-	<form th:action="@{/user/withdrawResult}" method="post">
-		<input type="submit" value="退会する">
-	</form>
-	
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+		th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+	<script
+		src="http://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+		th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"></script>
+
 </body>
 </html>

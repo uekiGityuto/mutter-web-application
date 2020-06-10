@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8">
-	<title>withdrawResult</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>withdrawResult</title>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}" />
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap-theme.min.css"
+	th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap-theme.min.css}" />
 </head>
 
 <body>
+	<div class="container">
 
-	<h1>退会しました</h1>
-	<p><a th:href="@{/user/gotoTop}">トップへ戻る</a></p>
+		<h1 class="text-success">退会しました</h1>
+		<hr>
+		<p>
+			<a th:href="@{/user/gotoTop}" class="text-primary">トップへ戻る</a>
+		</p>
 
+	</div>
 </body>
 </html>

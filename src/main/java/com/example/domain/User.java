@@ -33,7 +33,7 @@ public class User implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="USER_ID")
 	@JsonIgnore
-	private String userId;
+	private Integer Id;
 	
 	@Column(unique = true, nullable = false, name="NAME", length=64)
 	@JsonIgnore

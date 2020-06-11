@@ -30,12 +30,13 @@ public class Mutter implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="MUTTER_ID")
-	private Integer mutterId;
+	private Integer Id;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	//@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false, name="TIMESTAMP")
-	private Date timestamp;
-			
+	//private Date timestamp;
+	private String timestamp;
+	
 	@Column(nullable = false, name = "TEXT", length = 120)
 	private String text;
 	

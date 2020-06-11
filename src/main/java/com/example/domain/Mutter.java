@@ -29,8 +29,8 @@ public class Mutter implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="ID", length=8)
-	private Integer id;
+	@Column(name="MUTTER_ID")
+	private Integer mutterId;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false, name="TIMESTAMP")

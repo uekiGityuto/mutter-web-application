@@ -2,10 +2,12 @@ package com.example.web;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -39,7 +41,13 @@ public class UserController {
 		}
 		User user = new User();
 		BeanUtils.copyProperties(form, user);
-		userService.create(user);
+		try {
+			userService.create(user);
+		} catch(DataAccessException e) {
+			FieldError fieldError = new FieldError(result.getObjectName(), "name", "そのusernameは既に使用されています");
+			result.addError(fieldError);
+			return moveRegisterView(model);
+		}
 		return "registerResult";
 	}
 	

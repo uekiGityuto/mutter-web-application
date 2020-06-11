@@ -7,6 +7,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -28,7 +30,12 @@ public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(nullable = false, name="NAME", length=64)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="USER_ID")
+	@JsonIgnore
+	private String userId;
+	
+	@Column(unique = true, nullable = false, name="NAME", length=64)
 	@JsonIgnore
 	private String name;
 	

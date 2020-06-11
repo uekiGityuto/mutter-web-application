@@ -1,6 +1,7 @@
 package com.example.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,9 +15,9 @@ public class UserService {
 	@Autowired UserRepository userRepository;
 	@Autowired PasswordEncoder passwordEncoder;
 	
-	public User create(User user) {
+	public void create(User user) throws DataAccessException {
 		user.setPass(passwordEncoder.encode(user.getPass()));
-		return userRepository.save(user);
+		userRepository.save(user);
 	}
 	
 	public void delete(User user) {

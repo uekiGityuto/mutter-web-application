@@ -44,7 +44,7 @@ public class UserController {
 		try {
 			userService.create(user);
 		} catch(DataAccessException e) {
-			FieldError fieldError = new FieldError(result.getObjectName(), "name", "そのusernameは既に使用されています");
+			FieldError fieldError = new FieldError(result.getObjectName(), "name", "既に使用されています。別のUsernameを使用してください");
 			result.addError(fieldError);
 			return moveRegisterView(model);
 		}

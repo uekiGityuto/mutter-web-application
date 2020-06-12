@@ -1,7 +1,6 @@
 package com.example.domain;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,9 +29,7 @@ public class Mutter implements Serializable{
 	@Column(name="MUTTER_ID")
 	private Integer Id;
 	
-	//@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false, name="TIMESTAMP")
-	//private Date timestamp;
 	private String timestamp;
 	
 	@Column(nullable = false, name = "TEXT", length = 120)

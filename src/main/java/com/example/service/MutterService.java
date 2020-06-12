@@ -2,7 +2,6 @@ package com.example.service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-//import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,9 +24,8 @@ public class MutterService {
 	
 	public Mutter create(Mutter mutter, User user) {
 		LocalDateTime localDateTime = LocalDateTime.now();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/M/d H:m");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/M/d HH:mm");
 		mutter.setTimestamp(localDateTime.format(formatter));
-		//mutter.setTimestamp(new Date());
 		mutter.setUser(user);
 		return mutterRepository.save(mutter);
 	}

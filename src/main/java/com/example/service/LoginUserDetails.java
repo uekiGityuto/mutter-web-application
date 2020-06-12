@@ -1,7 +1,9 @@
 package com.example.service;
 
 
-import org.springframework.security.core.authority.AuthorityUtils;
+import java.util.Collection;
+
+import org.springframework.security.core.GrantedAuthority;
 
 import com.example.domain.User;
 
@@ -14,8 +16,8 @@ public class LoginUserDetails extends org.springframework.security.core.userdeta
 	private static final long serialVersionUID = 1L;
 	private final User user;
 	
-	public LoginUserDetails(User user) {
-		super(user.getName(), user.getPass(), AuthorityUtils.createAuthorityList("ROLE_USER"));
+	public LoginUserDetails(User user, Collection<GrantedAuthority> authorities) {
+		super(user.getName(), user.getPass(), authorities);
 		this.user = user;
 	}
 	

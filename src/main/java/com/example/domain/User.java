@@ -32,18 +32,21 @@ public class User implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="USER_ID")
-	@JsonIgnore
 	private Integer Id;
 	
 	@Column(unique = true, nullable = false, name="NAME", length=64)
-	@JsonIgnore
 	private String name;
 	
 	@Column(nullable = false, name="PASS", length=64)
 	@JsonIgnore
 	private String pass;
 	
-	@JsonIgnore
+	@Column(nullable = false, name="ENABLE")
+	private boolean enable;//有効なアカウントかどうか
+
+	@Column(nullable = false, name="ADMIN")
+	private boolean admin;//管理者かどうか
+	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
 	private List<Mutter> mutters;
 

@@ -16,12 +16,21 @@
 
 		<h1>つぶやき君</h1>
 		<p>
-			<span sec:authentication="principal.user.name">山田</span>さん、ログイン中。
+			<span sec:authentication="principal.user.name">山田</span>さん
+			<span sec:authorize="hasRole('ADMIN')">（ADMIN権限）</span>
+			、ログイン中
 		</p>
-
-		<form th:action="@{/logout}" method="post">
-			<button type="submit" class="btn btn-secondary btn-xs">ログアウト</button>
-		</form>
+		<div class="btn-group">
+			<form th:action="@{/logout}" method="post">
+				<button type="submit" class="btn btn-secondary btn-xs">ログアウト</button>
+			</form>
+			&nbsp;&nbsp;
+			<div sec:authorize="hasRole('ADMIN')">
+				<form th:action="@{/management}" method="get">
+					<button type="submit" class="btn btn-secondary btn-xs">ユーザ管理</button>
+				</form>
+			</div>
+		</div>
 		<p>
 			<a th:href="@{/main}" class="text-primary">更新</a>
 		</p>

@@ -1,1 +1,0 @@
-INSERT INTO USER(NAME, PASS) VALUES('yuto', '1qaz2wsx');

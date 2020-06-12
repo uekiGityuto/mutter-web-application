@@ -28,8 +28,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	//アクセスフィルター（AuthenticationFilter）のカスタマイズ
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        //ログインページを指定。
-        //ログインページへのアクセスは全員許可する。
+        //ログインページを指定
+        //ログインページへのアクセスは全員許可する
         http.formLogin()
             .loginPage("/index")
             .loginProcessingUrl("/authenticate")
@@ -39,12 +39,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .failureUrl("/index?error")
             .permitAll();
 		
-        //ユーザ登録ページへのアクセスは全員許可する。それ以外は認証が必要とする。
+        //ユーザ登録ページへのアクセスは全員許可する。
+        //それ以外は認証が必要とする
+        //'/management/'以下はROLE_ADMINのユーザのみ認可する
         http.authorizeRequests()
         	//.antMatchers("/index").permitAll()
-            .antMatchers("/user/register").permitAll()
+            .antMatchers("/user/registration").permitAll()
             .antMatchers("/user/registerResult").permitAll()
             .antMatchers("/user/gotoTop").permitAll()
+            .antMatchers("/management/**").hasRole("ADMIN")//'ROLE_'はつけない
             .anyRequest().authenticated();
         
         //ログアウト後に遷移するページを指定
@@ -54,7 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     //パスワードのエンコード方式を指定
     @Bean
     PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();//Pbkdf2PasswordEncoder()が推奨されているらしい
+        return new BCryptPasswordEncoder();
     }
 /*
     //パスワードのエンコード方式を指定

@@ -28,9 +28,9 @@ public class UserController {
 		return new UserForm();
 	}	
 	
-	@GetMapping(path = "register")
+	@GetMapping(path = "registration")
 	String moveRegisterView(Model model) {
-		return "register";
+		return "registration";
 	}
 	
 	//登録処理

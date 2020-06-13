@@ -23,7 +23,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Import(User.class)
 @ExtendWith(SpringExtension.class)
-@SpringBootTest(properties = { "spring.datasource.url:jdbc:log4jdbc:h2:mem:testdb" })
+@SpringBootTest(properties = 
+	{ "spring.datasource.url:jdbc:log4jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE" })
 class UserServiceTest {
 	
 	@Autowired

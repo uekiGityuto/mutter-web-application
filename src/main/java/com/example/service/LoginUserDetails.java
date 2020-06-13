@@ -17,7 +17,7 @@ public class LoginUserDetails extends org.springframework.security.core.userdeta
 	private final User user;
 	
 	public LoginUserDetails(User user, Collection<GrantedAuthority> authorities) {
-		super(user.getName(), user.getPass(), authorities);
+		super(user.getName(), user.getPass(), user.isEnable(), true, true, true, authorities);
 		this.user = user;
 	}
 	

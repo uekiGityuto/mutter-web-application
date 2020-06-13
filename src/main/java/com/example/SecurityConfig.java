@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 //import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 
+import com.example.service.CustomAuthenticationFailurehandler;
 import com.example.service.LoginUserDetailsService;
 
 //アプリ起動時に読み込まれるコンフィグファイル
@@ -36,12 +37,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .usernameParameter("name")
             .passwordParameter("pass")
             .defaultSuccessUrl("/main", true)
-            .failureUrl("/index?error")
+            //failureHandlerを呼ばない場合は認証エラー時に"/index?error"にリダイレクトする
+            .failureHandler(new CustomAuthenticationFailurehandler())
             .permitAll();
 		
         //ユーザ登録ページへのアクセスは全員許可する。
         //それ以外は認証が必要とする
-        //'/management/'以下はROLE_ADMINのユーザのみ認可する
+        //"/management/"以下はROLE_ADMINのユーザのみ認可する
         http.authorizeRequests()
         	//.antMatchers("/index").permitAll()
             .antMatchers("/user/registration").permitAll()

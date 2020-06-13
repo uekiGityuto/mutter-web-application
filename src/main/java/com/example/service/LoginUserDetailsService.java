@@ -23,9 +23,6 @@ public class LoginUserDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Optional<User> optionalUser = userRepository.findByName(username);
 		User user = optionalUser.orElseThrow(() -> new UsernameNotFoundException("該当のユーザは存在しません"));
-		if(!user.isEnable()) {
-			throw new UsernameNotFoundException("該当のユーザは無効になっています");
-		}
 		return new LoginUserDetails(user, this.getAuthorities(user));
 	}
 	

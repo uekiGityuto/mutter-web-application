@@ -23,14 +23,14 @@
 				th:classappend="${#fields.hasErrors('name')}?'has-error has-feedback'">
 				<input type="text" class="form-control" th:field="*{name}"
 					placeholder="Username" required="required">
-				<span th:if="${#fields.hasErrors('name')}" class="help-block"
+				<span th:if="${#fields.hasErrors('name')}" class="form-text"
 					th:errors="*{name}">error!</span>
 			</div>
 			<div class="form-group"
 				th:classappend="${#fields.hasErrors('pass')}?'has-error has-feedback'">
 				<input type="password" class="form-control" th:field="*{pass}"
 					placeholder="Password" required="required">
-				<span th:if="${#fields.hasErrors('pass')}" class="help-block"
+				<span th:if="${#fields.hasErrors('pass')}" class="form-text"
 					th:errors="*{pass}">error!</span>
 			</div>
 			<br>

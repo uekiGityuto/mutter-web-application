@@ -45,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //それ以外は認証が必要とする
         //"/management/"以下はROLE_ADMINのユーザのみ認可する
         http.authorizeRequests()
-        	//.antMatchers("/index").permitAll()
+        	.antMatchers("/index**").permitAll()
             .antMatchers("/user/registration").permitAll()
             .antMatchers("/user/registerResult").permitAll()
             .antMatchers("/user/gotoTop").permitAll()

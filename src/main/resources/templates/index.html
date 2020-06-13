@@ -19,15 +19,10 @@
 
 		<form th:action="@{/authenticate}" class="form-signin" method="post">
 			<h4 class="form-signin-heading">ログインフォーム</h4>
-			<div th:unless="${#strings.isEmpty(session.errReason)}" class="alert alert-danger"
+			<div th:if="${param.error}" th:unless="${#strings.isEmpty(session.errReason)}" class="alert alert-danger"
 				th:text="${session.errReason}">
 				ユーザ名またはパスワードが正しくありません!!!
 			</div>
-			<!-- 認証失敗時の処理がデフォルトの場合(index?errorに遷移する場合)は以下のようにエラーメッセージを出す
-			<div th:if="${param.error}" class="alert alert-danger">
-				ユーザ名またはパスワードが正しくありません
-			</div>
-			-->
 			<div class="form-group">
 				<input type="text" class="form-control" name="name" placeholder="Username" required="required">
 			</div>

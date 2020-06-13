@@ -45,7 +45,7 @@ public class CustomAuthenticationFailurehandler implements AuthenticationFailure
 		}
 		
 		RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
-        redirectStrategy.sendRedirect(request, response, "/index");
+        redirectStrategy.sendRedirect(request, response, "/index?error");
 
 	}
 

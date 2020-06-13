@@ -85,6 +85,7 @@
 
 		<hr>
 	
+		<div sec:authorize="hasRole('USER')">
 		<form th:action="@{/user/withdrawResult}" method="post">
 			<input type="button" class="btn btn-secondary" value="退会する"
 			data-toggle="modal" data-target="#confirmWithdraw">
@@ -114,6 +115,7 @@
 		</div>
 		
 		</form>
+		</div>
 
 	</div>
 

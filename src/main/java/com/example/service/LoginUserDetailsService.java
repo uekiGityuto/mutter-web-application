@@ -28,7 +28,7 @@ public class LoginUserDetailsService implements UserDetailsService {
 	
 	private Collection<GrantedAuthority> getAuthorities(User user){
 		if(user.isAdmin()) {
-			return AuthorityUtils.createAuthorityList("ROLE_ADMIN","ROLE_USER");
+			return AuthorityUtils.createAuthorityList("ROLE_ADMIN");
 		} else {
 			return AuthorityUtils.createAuthorityList("ROLE_USER");
 		}

@@ -16,6 +16,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.session.SessionAuthenticationException;
 
 public class CustomAuthenticationFailurehandler implements AuthenticationFailureHandler {
 
@@ -34,6 +35,8 @@ public class CustomAuthenticationFailurehandler implements AuthenticationFailure
 			errReason = "このユーザは無効になっています";
 		} else if (exception instanceof LockedException) {
 			errReason = "このユーザはロックされています";
+		} else if (exception instanceof SessionAuthenticationException) {
+			errReason = "このユーザはログイン中です。同一ユーザでのログインは出来ません";
 		} else {
 			errReason = "不明なエラーが発生しました";
 		}

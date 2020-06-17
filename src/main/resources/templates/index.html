@@ -16,12 +16,19 @@
 		<div class="jumbotron">
 			<h1>つぶやき君へようこそ</h1>
 		</div>
-
+		
+		<div th:if="${param.expired}" class="alert alert-danger">
+			<p>同じ端末、異なる端末に関わらず、別の画面からログインされたためログアウトしました。</p>
+		</div>
+		<div th:if="${param.timeout}" class="alert alert-danger">
+			<p>セッションタイムアウトしました。</p>
+		</div>
+		
 		<form th:action="@{/authenticate}" class="form-signin" method="post">
 			<h4 class="form-signin-heading">ログインフォーム</h4>
 			<div th:if="${param.error}" th:unless="${#strings.isEmpty(session.errReason)}" class="alert alert-danger"
 				th:text="${session.errReason}">
-				ユーザ名またはパスワードが正しくありません!!!
+				ユーザ名またはパスワードが正しくありません
 			</div>
 			<div class="form-group">
 				<input type="text" class="form-control" name="name" placeholder="Username" required="required">

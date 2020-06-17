@@ -7,11 +7,8 @@ import org.springframework.security.core.GrantedAuthority;
 
 import com.example.domain.User;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
-@Data
-@EqualsAndHashCode(callSuper=true)
+//org.springframework.security.core.userdetails.Userで
+//ボイラープレートコードを定義しているのでlombokは使わない(変にOverrideすると挙動がおかしくなる)
 public class LoginUserDetails extends org.springframework.security.core.userdetails.User{
 	private static final long serialVersionUID = 1L;
 	private final User user;
@@ -20,5 +17,9 @@ public class LoginUserDetails extends org.springframework.security.core.userdeta
 		super(user.getName(), user.getPass(), user.isEnable(), true, true, true, authorities);
 		this.user = user;
 	}
+
+	public User getUser() {
+		return user;
+	}	
 	
 }

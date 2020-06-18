@@ -1,6 +1,7 @@
 package com.example.domain;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,7 +31,8 @@ public class Mutter implements Serializable{
 	private Integer Id;
 	
 	@Column(nullable = false, name="TIMESTAMP")
-	private String timestamp;
+	//private String timestamp;
+	private LocalDateTime timestamp;
 	
 	@Column(nullable = false, name = "TEXT", length = 120)
 	private String text;

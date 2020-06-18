@@ -24,8 +24,9 @@ public class MutterService {
 	
 	public Mutter create(Mutter mutter, User user) {
 		LocalDateTime localDateTime = LocalDateTime.now();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/M/d HH:mm");
-		mutter.setTimestamp(localDateTime.format(formatter));
+		//DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/M/d HH:mm");
+		//mutter.setTimestamp(localDateTime.format(formatter));
+		mutter.setTimestamp(localDateTime);
 		mutter.setUser(user);
 		return mutterRepository.save(mutter);
 	}

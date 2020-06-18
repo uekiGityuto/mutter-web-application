@@ -64,7 +64,8 @@
 					</tr>
 				</thead>
 				<tr class="d-flex" th:each="mutter : ${mutters}">
-					<td class="col-md-2" th:text="${mutter.timestamp}">11:20</td>
+					<!-- <td class="col-md-2" th:text="${mutter.timestamp}">11:20</td> -->
+					<td class="col-md-2" th:text="${#temporals.format(mutter.timestamp, 'yyyy/M/d HH:mm')}">2020/6/18 11:20</td>
 					<td class="col-md-2" th:text="${mutter.user.name}">山田太郎</td>
 					<td class="col-md-8" th:text="${mutter.text}">山田は偉い</td>
 				</tr>

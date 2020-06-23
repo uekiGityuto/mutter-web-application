@@ -15,7 +15,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
-@SpringBootTest(properties = { "spring.datasource.url:jdbc:log4jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE" })
+@SpringBootTest(properties = { "spring.datasource.url:jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE;" })
 @AutoConfigureMockMvc
 class UserControllerTest {
 

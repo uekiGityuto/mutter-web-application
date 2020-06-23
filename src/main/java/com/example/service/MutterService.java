@@ -16,7 +16,8 @@ import com.example.repository.MutterRepository;
 @Service
 @Transactional
 public class MutterService {
-	@Autowired MutterRepository mutterRepository;
+	@Autowired
+	MutterRepository mutterRepository;
 	
 	public Page<Mutter> findAll(Pageable pageable) {
 		return mutterRepository.findAllDescOrderById(pageable);
